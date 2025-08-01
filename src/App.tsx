@@ -6,6 +6,8 @@ import styles from './components/Header.module.css';
 import Navbar from './components/Navbar';
 import ThemeSwitcher from './components/ThemeSwitcher';
 
+import guaipecaLogo from './assets/Guaipeca_resized_transparent.png';
+
 import HomePage from './pages/HomePage';
 import About from './pages/About';
 import Projects from './pages/Projects';
@@ -24,7 +26,7 @@ function App() {
 
   return (
     <Router>
-      <Header logoSrc="/logo192.png">
+      <Header logoSrc={guaipecaLogo} height="240px">
         <h1 className={styles.headerTitle}>Amyr Neto Showcase</h1>
         <ThemeSwitcher checked={theme === 'dark'} onChange={toggleTheme} />
       </Header>
