@@ -1,0 +1,24 @@
+:root {
+  --bg-color: #fff;
+  --text-color: #222;
+  --header-bg: #f9f9f9;
+  --header-text: #333;
+}
+
+.dark {
+  --bg-color: #181818;
+  --text-color: #eee;
+  --header-bg: #272727;
+  --header-text: #fafafa;
+}
+
+body, #root {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+.header {
+  background: var(--header-bg) !important;
+  color: var(--header-text) !important;
+}

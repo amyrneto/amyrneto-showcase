@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  width: 100%;
+  background: var(--header-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 1rem;
+  color: var(--header-text);
+}
+
+.logoContainer {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+  max-width: 120px; /* matches height for square logo */
+}
+
+.logo {
+  max-height: 80%;
+  max-width: 80%;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+}
+
+.rightContent {
+  flex: 4 1 0;
+  padding-left: 2rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 0;
+  /* Add this so children fill and align right */
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.headerTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--header-text);
+  word-break: break-word;
+  text-align: center;
+  width: 100%;
+}
