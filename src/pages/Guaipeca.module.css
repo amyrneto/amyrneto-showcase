@@ -1,0 +1,26 @@
+.floatingFigure {
+  float: right;
+  width: 300px; /* Adjust as needed */
+  margin: 0 0 1rem 2rem; /* top right bottom left */
+  max-width: 45%; /* Prevents it from being too wide on small screens */
+}
+
+.floatingFigure img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.floatingFigure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Clear the float after the introductory content */
+.clearFloat {
+  clear: both;
+}

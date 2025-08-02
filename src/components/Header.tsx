@@ -9,11 +9,14 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ logoSrc, children, height = '120px' }) => (
   <header className={styles.header} style={{ height }}>
-    <div className={styles.logoContainer} style={{ maxWidth: height }}>
+    <div className={styles.logoContainer} style={{ maxWidth: height, marginLeft: '2rem', marginTop: '1rem' }}>
       <img src={logoSrc} alt="Logo" className={styles.logo} />
     </div>
-    <div className={styles.rightContent}>
+    <div className={styles.switchTheme}>
       {children}
+    </div>
+    <div className={styles.titleContainer}>
+      <h1 className={styles.headerTitle}>Amyr Neto Showcase</h1>
     </div>
   </header>
 );

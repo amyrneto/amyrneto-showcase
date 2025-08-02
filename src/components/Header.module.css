@@ -1,6 +1,7 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   height: 120px;
   width: 100%;
   background: var(--header-bg);
@@ -10,32 +11,39 @@
 }
 
 .logoContainer {
-  flex: 1 1 0;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 0;
   height: 100%;
-  max-width: 120px; /* matches height for square logo */
+  max-width: 100%; /* matches height for square logo */
 }
 
 .logo {
-  max-height: 80%;
-  max-width: 80%;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
   aspect-ratio: 1 / 1;
-  border-radius: 8px;
+  border-radius: 8%;
 }
 
-.rightContent {
-  flex: 4 1 0;
-  padding-left: 2rem;
+.titleContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
   height: 100%;
   min-width: 0;
-  /* Add this so children fill and align right */
-  width: 100%;
+  margin-left: 2rem;
+  margin-bottom: 3%;
+}
+
+.switchTheme {
+  padding-left: 2rem;
+  padding-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  min-width: 0;
   justify-content: flex-end;
 }
 
@@ -45,6 +53,6 @@
   font-size: 2.2rem;
   color: var(--header-text);
   word-break: break-word;
-  text-align: center;
+  text-align:  center;
   width: 100%;
 }

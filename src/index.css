@@ -30,3 +30,9 @@ code {
   --header-bg: #272727;
   --header-text: #fafafa;
 }
+
+.content-container {
+  max-width: 700px; /* or 600px, 800px, etc. */
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
