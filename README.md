@@ -1,46 +1,161 @@
-# Getting Started with Create React App
+# Amyr Neto - Professional Portfolio Showcase
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive React-based portfolio website showcasing my professional skills, projects, and expertise in software development. This project demonstrates modern web development practices, responsive design, and full-stack capabilities.
 
-## Available Scripts
+## 🎯 Purpose
 
-In the project directory, you can run:
+This project serves as a practical demonstration of my technical abilities, including:
+- **React & TypeScript** development
+- **Responsive web design** with CSS modules
+- **Dynamic theming system** with light/dark mode toggle
+- **API integration** with Vercel serverless functions
+- **Email functionality** using Nodemailer
+- **Video integration** with custom video player components
+- **Modern deployment** practices
+- **Clean code architecture** and component organization
 
-### `npm start`
+## 🌐 Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Visit the live portfolio at: [https://amyrneto-showcase.vercel.app](https://amyrneto-showcase.vercel.app)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📄 License & Usage
 
-### `npm test`
+This project is **completely free and open source**. You are welcome to:
+- ✅ Use this code for your own portfolio
+- ✅ Modify it to fit your needs
+- ✅ Learn from the implementation
+- ✅ Share it with others
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**No payment required, no restrictions.** 
 
-### `npm run build`
+While not required, **credit would be appreciated** if you use this code as a foundation for your own projects.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Node.js** (version 14 or higher)
+- **npm** or **yarn** package manager
+- **Git** for cloning the repository
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/amyrneto/amyrneto-showcase.git
+   cd amyrneto-showcase
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. **Set up environment variables:**
+   Create a `.env.local` file in the root directory with the following structure:
+   ```bash
+   # Email configuration for contact form
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-gmail-app-password
+   EMAIL_TO=your-email@gmail.com
+   ```
+   
+   **Note:** For Gmail, you'll need to:
+   - Enable 2-Factor Authentication
+   - Generate an App Password (not your regular password)
+   - Use the App Password in `EMAIL_PASS`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. **Run the development server:**
+   ```bash
+   # For basic React development (contact form won't work)
+   npm start
+   
+   # For full functionality including API routes
+   npm install -g vercel
+   vercel dev
+   ```
 
-## Learn More
+5. **Open your browser:**
+   - React dev server: `http://localhost:3000` (if using npm start)
+   - Vercel dev server: `http://localhost:3000` (if using vercel dev)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🏗️ Building for Production
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# Create production build
+npm run build
+
+# Test production build locally
+npm install -g serve
+serve -s build
+```
+
+## 📧 Contact Form Setup
+
+The contact form uses **Vercel serverless functions** and **Nodemailer** for email functionality:
+
+- **API Route:** `/api/contact.js`
+- **Email Service:** Gmail SMTP
+- **Dependencies:** `nodemailer` for email sending
+
+### Local Development
+
+- Use `vercel dev` instead of `npm start` to test the contact form locally
+- The contact form will show a mock success message when using `npm start`
+
+### Deployment
+
+When deployed to Vercel, add your environment variables in:
+**Project Settings → Environment Variables**
+
+## 🛠️ Technologies Used
+
+- **Frontend:** React 18, TypeScript, CSS Modules
+- **Backend:** Vercel Serverless Functions, Node.js
+- **Email:** Nodemailer with Gmail SMTP
+- **Deployment:** Vercel
+- **Development:** Create React App, ESLint, VS Code
+
+## 📁 Project Structure
+
+```
+amyrneto-showcase/
+├── api/                    # Vercel serverless functions
+│   └── contact.js         # Contact form API endpoint
+├── public/                # Static assets
+├── src/
+│   ├── components/        # Reusable React components
+│   ├── pages/            # Page components
+│   ├── assets/           # Images, fonts, etc.
+│   └── App.tsx           # Main application component
+├── .env.local            # Environment variables (create this)
+└── package.json          # Dependencies and scripts
+```
+
+## 🎨 Customization
+
+To adapt this portfolio for your own use:
+
+1. **Replace content** in the page components (`src/pages/`)
+2. **Update images** in `src/assets/`
+3. **Modify styling** in the CSS module files
+4. **Update contact information** in the relevant components
+5. **Configure your own email** in the environment variables
+
+## 🤝 Contributing
+
+While this is primarily a personal portfolio, suggestions and improvements are welcome! Feel free to:
+- Open issues for bugs or suggestions
+- Submit pull requests for improvements
+- Fork the project and make it your own
+
+## 📞 Contact
+
+**Amyr Borges Fortes Neto**
+- Email: amyrneto@gmail.com
+- LinkedIn: [Your LinkedIn Profile]
+- GitHub: [@amyrneto](https://github.com/amyrneto)
+
+---
+
+*This README was written to help developers understand and use this portfolio template. Happy coding! 🚀*
