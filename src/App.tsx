@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import DesktopNavigation from './components/DesktopNavigation';
 import Navigation from './components/Navigation';
 import ThemeSwitcher from './components/ThemeSwitcher';
 
@@ -15,10 +15,9 @@ import Contact from './pages/Contact';
 
 function App() {
   const [theme, setTheme] = useState(() => {
-  // Try to load from localStorage, otherwise default to 'dark'
-  return localStorage.getItem('theme') || 'dark';
-});
-
+    return localStorage.getItem('theme') || 'dark';
+  });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -26,15 +25,34 @@ function App() {
 
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
+  const handleMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle the state
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <Router>
       <div className={`App ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
-        <Header logoSrc={homeLogo} height="320px">
+        <Header 
+          logoSrc={homeLogo} 
+          height="320px"
+          onMenuToggle={handleMenuToggle} // Pass toggle function
+          isMenuOpen={isMobileMenuOpen} // Pass current state
+        >
           <ThemeSwitcher checked={theme === 'dark'} onChange={toggleTheme} />
         </Header>
         
-        <Navigation>
-        </Navigation>
+        {/* Desktop Navigation - visible on wide screens */}
+        <DesktopNavigation />
+        
+        {/* Mobile Navigation - slides from right on narrow screens */}
+        <Navigation 
+          isOpen={isMobileMenuOpen}
+          onClose={closeMobileMenu}
+        />
 
         <div style={{ padding: '2rem' }}>
           <Routes>

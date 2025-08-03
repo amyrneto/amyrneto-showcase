@@ -1,30 +1,25 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+import styles from './VideoPlayer.module.css';
 
-interface VideoPlayerProps {
+type VideoPlayerProps = {
   url: string;
-  title?: string;
-  width?: string;
-  height?: string;
-}
+  title: string;
+};
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({
-  url,
-  title = 'Video',
-  width = '100%',
-  height = '360px',
-}) => {
-    return (
-    <div className="video-wrapper" style={{ position: 'relative', paddingTop: '56.25%' }}>
-        <ReactPlayer
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ url, title }) => (
+  <div className={styles.videoContainer}>
+    {title && <h3 className={styles.videoTitle}>{title}</h3>}
+    <div className={styles.videoWrapper}>
+      <ReactPlayer
         src={url}
+        className={styles.video}
         width="100%"
         height="100%"
-        style={{ position: 'absolute', top: 0, left: 0 }}
         controls
-        />
+      />
     </div>
-    );
-};
+  </div>
+);
 
 export default VideoPlayer;

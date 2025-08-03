@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './ContactForm.module.css';
 
 const ContactForm: React.FC = () => {
   const [form, setForm] = useState({ 
@@ -15,48 +16,34 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted with data:', form);
     setStatus('sending');
     
-    // Mock for local development - TEMPORARILY COMMENTED OUT FOR TESTING
-    // if (process.env.NODE_ENV === 'development') {
-    //   console.log('Development mode - simulating email send:', form);
-    //   setTimeout(() => {
-    //     setStatus('sent');
-    //     console.log('Mock email sent successfully!');
-    //   }, 1500);
-    //   return;
-    // }
+    // Mock for local development
+    if (process.env.NODE_ENV === 'development') {
+      setTimeout(() => {
+        setStatus('sent');
+      }, 1500);
+      return;
+    }
 
-    // Real API call
+    // Real API call for production
     try {
-      console.log('Making real API call to /api/contact');
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
-      
-      console.log('API response status:', res.status);
-      
-      if (res.ok) {
-        setStatus('sent');
-        console.log('Real email sent successfully!');
-      } else {
-        const errorData = await res.text();
-        console.error('API error:', errorData);
-        setStatus('error');
-      }
-    } catch (error) {
-      console.error('Network error:', error);
+      if (res.ok) setStatus('sent');
+      else setStatus('error');
+    } catch {
       setStatus('error');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '0 auto' }}>
-      <div style={{ marginBottom: '1rem' }}>
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>
           Your Name:
           <input
             type="text"
@@ -64,12 +51,13 @@ const ContactForm: React.FC = () => {
             value={form.name}
             onChange={handleChange}
             required
-            style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
+            className={styles.input}
+            placeholder="Enter your name"
           />
         </label>
       </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>
           Your Email:
           <input
             type="email"
@@ -77,12 +65,13 @@ const ContactForm: React.FC = () => {
             value={form.email}
             onChange={handleChange}
             required
-            style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
+            className={styles.input}
+            placeholder="Enter your email"
           />
         </label>
       </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>
           Subject:
           <input
             type="text"
@@ -90,12 +79,13 @@ const ContactForm: React.FC = () => {
             value={form.subject}
             onChange={handleChange}
             required
-            style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
+            className={styles.input}
+            placeholder="Enter subject"
           />
         </label>
       </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>
           Message:
           <textarea
             name="message"
@@ -103,29 +93,27 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
             required
             rows={5}
-            style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
+            className={styles.textarea}
+            placeholder="Your message goes here..."
           />
         </label>
       </div>
       <button
         type="submit"
         disabled={status === 'sending'}
-        style={{
-          padding: '0.75rem 1.5rem',
-          backgroundColor: '#007acc',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: status === 'sending' ? 'not-allowed' : 'pointer',
-        }}
+        className={styles.button}
       >
         {status === 'sending' ? 'Sending...' : 'Send'}
       </button>
       {status === 'sent' && (
-        <p style={{ color: 'green', marginTop: '1rem' }}>Message sent! Thank you.</p>
+        <div className={`${styles.message} ${styles.success}`}>
+          Message sent! Thank you.
+        </div>
       )}
       {status === 'error' && (
-        <p style={{ color: 'red', marginTop: '1rem' }}>There was an error. Please try again.</p>
+        <div className={`${styles.message} ${styles.error}`}>
+          There was an error. Please try again.
+        </div>
       )}
     </form>
   );

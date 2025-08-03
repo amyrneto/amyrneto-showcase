@@ -1,0 +1,64 @@
+.videoContainer {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.videoTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text-color, #333);
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #000; /* Black background for loading */
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+}
+
+/* ReactPlayer specific styles */
+.video > div {
+  border-radius: 8px !important;
+}
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .videoContainer {
+    margin: 1.5rem 0;
+  }
+  
+  .videoTitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .videoContainer {
+    margin: 1rem 0;
+  }
+  
+  .videoTitle {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .videoWrapper {
+    border-radius: 4px;
+  }
+  
+  .video {
+    border-radius: 4px;
+  }
+}
