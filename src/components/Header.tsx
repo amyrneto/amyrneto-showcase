@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, children, height = '120px' }) 
         <img 
           src={logoSrc} 
           alt="Amyr Showcase Logo" 
-          style={{ cursor: 'pointer' }}
+          className={styles.logo}
         />
       </Link>
     </div>
