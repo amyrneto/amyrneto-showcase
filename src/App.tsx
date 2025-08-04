@@ -38,15 +38,15 @@ function App() {
       <div className={`App ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
         <Header 
           logoSrc={homeLogo} 
-          onMenuToggle={handleMenuToggle} // Pass toggle function
-          isMenuOpen={isMobileMenuOpen} // Pass current state
+          onMenuToggle={handleMenuToggle}
+          isMenuOpen={isMobileMenuOpen}
         >
           <ThemeSwitcher checked={theme === 'dark'} onChange={toggleTheme} />
         </Header>
         
         {/* Desktop Navigation - visible on wide screens */}
         <DesktopNavigation />
-        
+
         {/* Mobile Navigation - slides from right on narrow screens */}
         <Navigation 
           isOpen={isMobileMenuOpen}
