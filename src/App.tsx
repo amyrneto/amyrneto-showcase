@@ -38,7 +38,6 @@ function App() {
       <div className={`App ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
         <Header 
           logoSrc={homeLogo} 
-          height="320px"
           onMenuToggle={handleMenuToggle} // Pass toggle function
           isMenuOpen={isMobileMenuOpen} // Pass current state
         >
