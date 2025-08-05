@@ -162,13 +162,21 @@
   background-color: var(--border-color, #e0e0e0);
 }
 
-/* Mobile adjustments */
-@media (max-width: 480px) {
+/* Mobile adjustments - CHANGE THIS BREAKPOINT */
+@media (max-width: 768px) {  /* Changed from 480px to 768px */
   .navigation {
-    width: 280px;
-    right: -280px;
+    width: 280px;          /* Narrower menu for mobile */
+    right: -280px;         /* Hide it off-screen */
+    
+    /* Additional iOS fixes for older devices */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
+  .navigationOpen {
+    right: 0; /* Slide in from right */
+  }
+
   .navHeader {
     padding: 1rem;
   }
